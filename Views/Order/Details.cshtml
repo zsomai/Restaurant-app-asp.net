@@ -1,0 +1,36 @@
+@model tema2.Utils.ViewOrder
+
+@{
+    ViewData["Title"] = "Order Details";
+}
+
+<h1>Order Details</h1>
+
+<div>
+    <h4>Order Id: @Model.Id</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">Date:</dt>
+        <dd class="col-sm-10">@Model.Date.ToShortDateString()</dd>
+        
+        <dt class="col-sm-2">Status:</dt>
+        <dd class="col-sm-10">@Model.Status</dd>
+
+        <dt class="col-sm-2">Meals:</dt>
+        <dd class="col-sm-10">
+            <ul>
+                @foreach (var tuple in Model.Meals)
+                {
+                    <li>Meal: @tuple.Item1.Name  - Price: @tuple.Item1.Price - Quantity: @tuple.Item2 </li>
+                }
+            </ul>
+        </dd>
+
+        <dt class="col-sm-2">Calculated Price:</dt>
+        <dd class="col-sm-10">@Model.CalculatedPrice</dd>
+    </dl>
+</div>
+
+<p>
+    <a asp-action="Index">Back to Orders</a>
+</p>

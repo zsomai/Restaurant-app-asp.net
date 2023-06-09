@@ -1,0 +1,16 @@
+@model tema2.Utils.ViewOrder
+
+
+
+<form asp-action="Status">
+  <label for="status">Select status:</label>
+  <select asp-for="Status" id="status">
+    <option value="RECIVED">Recived</option>
+    <option value="PREPARING">Preparing</option>
+    <option value="DELIVERED">Delivered</option>
+  </select>
+  <input type="hidden" asp-for="Id" />
+  <input type="hidden" asp-for="Date" />
+  <br><br>
+  <input type="submit" value="Submit">
+</form>

@@ -1,0 +1,38 @@
+@model IEnumerable<tema2.Utils.ViewOrder>
+
+@{
+    ViewData["Title"] = "Orders";
+}
+
+<h1>Orders</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Price</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                <td>@Html.DisplayFor(modelItem => item.Date)</td>
+                <td>@Html.DisplayFor(modelItem => item.Status)</td>
+                <td>@Html.DisplayFor(modelItem => item.CalculatedPrice)</td>
+                <td>
+                    <a asp-action="Status" asp-route-id="@item.Id">Modify Status</a>  |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a>  |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+<a asp-action="New">Add new order</a>
